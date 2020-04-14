@@ -2,13 +2,13 @@
 A programming language with very little functionality
 
 <div>
-  <h2>Basic usage</h2>
+  <h1>Basic usage</h1>
   <h3>Command</h3>
   <h3>Command : Argument</h3>
   <h3>Command ; Command</h3>
   <h3>Command : Argument ; Command : Argument</h3>
 </div>
-<h2>functionality</h2>
+<h1>functionality</h1>
 <div>
   <h2>text</h2>
   <h3>This can be used to mirror input</h3>
@@ -44,7 +44,7 @@ A programming language with very little functionality
     <ul>Output | Lenk Version: x.x.x</ul>
   </li>
 </div>
-<h2>Planned features</h2>
+<h1>Planned features</h1>
 <div>
   <li>
     <ul>if<br>do comparisons between variables</ul>
