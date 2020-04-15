@@ -1,0 +1,29 @@
+Lenk Help
+
+Help
+Responds with this
+Args: none
+
+Version
+Responds with the current version with 'Lenk Version' following it
+Args: [only]
+
+Text
+Mirrors input
+Args: {string}
+
+Blank
+Fesponds with a newline
+Args: none
+
+Numeric
+Evaluates math expressions
+Args: {expression}
+
+Clear/Cls
+Clears the terminal
+Args: none
+
+Quit/Exit
+Exits process
+Args: none

@@ -1,7 +1,9 @@
 def Parse(command: str):
-    import os,sys,re
+    from os import system, name
+    from sys import exit
+    from re import sub
 
-    LenkVersion = '0.0.9'
+    LenkVersion = '0.1.0'
     CurrentError = None
     AllCommands = command.split(';')
     
@@ -15,16 +17,16 @@ def Parse(command: str):
         for error in errors:
             line = error[2]
             fullerr += f'Line {line}:({error[1]}: {error[0]}); '
-        return f"{start}{fullerr[0:-2]}\n"
+        return f"\n{start}{fullerr[0:-2]}\n"
     
     line = 1
 
     for cmd in AllCommands:
         _ = cmd.split(':', 1)
-        Command = re.sub(r'[ ]',' ',re.sub(r'[;]', ';', _[0].replace(' ', '')))
+        Command = sub(r'[ ]',' ',sub(r'[;]', ';', _[0].replace(' ', '')))
         
         try:
-            Argument = re.sub(r'^[ ]*','',_[1])
+            Argument = sub(r'^[ ]*','',_[1])
             Arguments = Argument.split('/')
         except IndexError:
             Argument = ''
@@ -38,8 +40,13 @@ def Parse(command: str):
             continue
 
         try:
+            #help
+            if Command == 'help':
+                with open('Help.log') as helpfile:
+                    Output += helpfile.read()
+
             #strings/text
-            if Command == 'text':
+            elif Command == 'text':
                 if len(Arguments) > 1:
                     Arguments = ""
                     for arg in Arguments:
@@ -65,10 +72,10 @@ def Parse(command: str):
 
             #quit/exit
             elif Command == 'exit' or Command == 'quit':
-                sys.exit(0)
+                exit(0)
             
             elif Command == 'clear' or Command == 'cls' or Command == 'erase':
-                os.system('cls' if os.name == 'nt' else 'clear')
+                system('cls' if name == 'nt' else 'clear')
 
             #Planned
             elif 'if' in Command:
