@@ -31,7 +31,7 @@
   <h2>Numeric</h2>
   <h3>This can be used to evaluate mathmatical expressions</h3>
   <li>
-    <ul>Arguments : math expression</ul>
+    <ul>Arguments: math expression</ul>
     <ul>Input | numeric : 23 * 3</ul>
     <ul>Output | 69</ul>
   </li>
