@@ -1,4 +1,4 @@
-</h1>Lenk</h1>
+<h1>Lenk</h1>
 <h2>A programming language with very little functionality</h2>
 
 <div>
