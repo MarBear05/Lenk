@@ -7,6 +7,7 @@ A programming language with very little functionality
   <h3>Command : Argument</h3>
   <h3>Command ; Command</h3>
   <h3>Command : Argument ; Command : Argument</h3>
+  <h3>Command ~ Command</h3>
 </div>
 <h1>functionality</h1>
 <div>
