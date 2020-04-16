@@ -5,7 +5,7 @@ Responds with this
 Args: none
 
 Version
-Responds with the current version with 'Lenk Version' following it
+Responds with the current version with 'Lenk Version' following it. With the 'only' argument set it will only respond with the current version.
 Args: [only]
 
 Text
@@ -27,3 +27,11 @@ Args: none
 Quit/Exit
 Exits process
 Args: none
+
+Set
+Creates a variable
+Args: {name, value}
+
+Get
+Responds with variables content
+Args: {variable}
