@@ -51,7 +51,6 @@
     <li>
       <ul>Arguments: name / value</ul>
       <ul>input | set : CoolVariable / CoolValue</ul>
-      <ul>Output | </ul>
     </li>
 </div>
 <div>
