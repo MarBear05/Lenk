@@ -1,45 +1,45 @@
 Lenk Help
 
-Help
-Responds with this
+Help<br>
+Responds with this<br>
 Args: none
 
-Version
-Responds with the current version with 'Lenk Version' following it. With the 'only' argument set it will only respond with the current version.
+Version<br>
+Responds with the current version with 'Lenk Version' following it. With the 'only' argument set it will only respond with the current version.<br>
 Args: [only]
 
-Text
-Mirrors input
+Text<br>
+Mirrors input<br>
 Args: {string}
 
-Blank
-Fesponds with a newline
+Blank<br>
+Fesponds with a newline<br>
 Args: none
 
-Numeric
-Evaluates math expressions
+Numeric<br>
+Evaluates math expressions<br>
 Args: {expression}
 
-Clear/Cls
-Clears the terminal
+Clear/Cls<br>
+Clears the terminal<br>
 Args: none
 
-Quit/Exit
-Exits process
+Quit/Exit<br>
+Exits process<br>
 Args: none
 
-Set
-Creates a variable
+Set<br>
+Creates a variable<br>
 Args: {name, value}
 
-Get
-Responds with variables content
+Get<br>
+Responds with variables content<br>
 Args: {variable}
 
-Open
-Gets the content of a file
+Open<br>
+Gets the content of a file<br>
 Args: {filepath}
 
-OpenScript
-Gets the content of a file and executes it
+OpenScript<br>
+Gets the content of a file and executes it<br>
 Args: {filepath}
