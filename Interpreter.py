@@ -3,12 +3,12 @@ def Parse(command: str):
     from sys import exit
     from re import sub
 
-    LenkVersion = '0.1.1'
+    LenkVersion = '0.1.2'
     CurrentError = None
     SplitCommands = command.split(';')
     AllCommands = []
     for cmd in SplitCommands:
-        AllCommands.append(cmd.split('~'))
+        AllCommands.append(cmd.split('\n'))
 
     # print(SplitCommands)
     # print(AllCommands)
@@ -17,7 +17,7 @@ def Parse(command: str):
         global Variables
         if not Variables:
             Variables = {}
-    except Exception:
+    except NameError:
         Variables = {}
 
     Output = ''
@@ -94,27 +94,55 @@ def Parse(command: str):
                     try:
                         VarName = Arguments[0]
                     except IndexError:
+                        VarName = ''
                         Output += Error(['No variable name given', 'Argument Error',line])
                     try:
                         VarValue = Arguments[1]
                     except IndexError:
+                        VarName = ''
                         Output += Error(['No variable value given', 'Argument Error', line])
                     
-                    if not VarName in Variables:
+                    if not VarName in Variables and VarName:
                         Variables.update({VarName: VarValue})
-                    else:
+                    elif VarName and VarValue:
                         Variables[VarName] = VarValue
 
                 elif Command == 'get':
                     try:
                         ReferenceName = Arguments[0]
                     except IndexError:
+                        ReferenceName = ''
                         Output += Error(['No reference given', 'Argument Error', line])
                     try:
-                        Variable = Variables[ReferenceName]
-                        Output += Variable
+                        if ReferenceName:
+                            Variable = Variables[ReferenceName]
+                            Output += Variable
                     except KeyError:
-                        Output += Error([f'{ReferenceName} is not a variable!', 'Variable Error', line])                  
+                        Output += Error([f'{ReferenceName} is not a variable!', 'Variable Error', line])
+
+                elif Command == 'open':
+                    try:
+                        File = open(Arguments[0])
+                    except IndexError:
+                        File = ''
+                        Output += Error(['No file path given', 'Argument Error', line])
+                    except IOError as ioe:
+                        File = ''
+                        Output += Error([f'Python error: "{ioe}"', 'IOError', line])
+                    if File:
+                        Output += File.read()
+                
+                elif Command == 'openscript':
+                    try:
+                        File = open(Arguments[0])
+                    except IndexError:
+                        File = ''
+                        Output += Error(['No file path given', 'Argument Error', line])
+                    except IOError as ioe:
+                        File = ''
+                        Output += Error([f'Python error: "{ioe}"', 'IOError', line])
+                    if File:
+                        Output += Parse(File.read())
 
                 #Planned
                 elif Command == 'if':
@@ -139,6 +167,6 @@ def Parse(command: str):
                 else:
                     Output += Error([f'The command "{Command}" does not exist!', 'Command Error',line])
             
-            line += 1
+        line += 1
             
     return Output

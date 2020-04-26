@@ -35,3 +35,11 @@ Args: {name, value}
 Get
 Responds with variables content
 Args: {variable}
+
+Open
+Gets the content of a file
+Args: {filepath}
+
+OpenScript
+Gets the content of a file and executes it
+Args: {filepath}
