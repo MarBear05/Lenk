@@ -1,13 +1,14 @@
-from Interpreter import Parse
-from sys import exit
+#Get Lenk
+from Lenk import Run
 
-def main():
+print(Run("Clear"))
+
+while True:
     try:
-        Input = str(input(f'Lenk {Parse("version:only")}>'))
+        Input = str(input(f'Lenk {Run("version:only")}>'))
+    #if ^C is omited
     except KeyboardInterrupt:
         exit(0)
-    Output = Parse(Input)
-    print(f'{Output}\n')
-    main()
 
-main()
+    Output = Run(Input)
+    print(f'{Output}\n')

@@ -9,13 +9,13 @@ except ImportError:
         sys.exit(1)
     except ImportError:
         sys.exit(1)
-from Interpreter import Parse
+from Lenk import Run
 
 App = QApplication([])
 AppWindow = QWidget(size=QSize(800,800))
 AppLayout = QGridLayout(AppWindow)
 
-AppWindow.setWindowTitle(f'Lenk <{Parse("version:only")}> GUI')
+AppWindow.setWindowTitle(f'Lenk <{Run("version:only")}> GUI')
 App.setStyle("Fusion")
 App.setStyleSheet("""
 QWidget { background:#222; color:#999; padding:12px; }
@@ -26,7 +26,7 @@ QTextEdit,
 QLineEdit { border-radius:20px; }
 """)
 
-ConsoleOGroup = QGroupBox(f'\t\tLenk {Parse("version:only")} Console Output')
+ConsoleOGroup = QGroupBox(f'\t\tLenk {Run("version:only")} Console Output')
 CGOLayout = QVBoxLayout(ConsoleOGroup)
 
 ConsoleOutput = QTextEdit()
@@ -46,7 +46,7 @@ def InterpretCommand():
         ConsoleOutput.clear()
         count = 1
     else:
-        LenkOutput = Parse(LenkInput)
+        LenkOutput = Run(LenkInput)
         ConsoleOutput.append(f'[{count}] {LenkOutput}')
         count +=1
     ConsoleInput.clear()
