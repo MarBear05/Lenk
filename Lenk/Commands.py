@@ -10,15 +10,19 @@ Controller = Controller()
 
 def Text(args, arg):
     ReturnString = ''
-    counter = 0
-    ReturnString += arg.replace('/','\n')
+    ReturnString += arg.replace('/', '\n')
     return ReturnString
 
 # numeric:23*3
 
 
 def Numeric(args, arg):
-    ReturnString = f'{eval(arg)}' if arg else ''
+    ReturnString = ''
+    try:
+        ReturnString += eval(arg)
+    except SyntaxError:
+        ReturnString += str(Error('Command Error',
+                                  'During evaluation an error occured'))
 
     return ReturnString
 
@@ -31,14 +35,18 @@ def Openfile(args, arg):
     try:
         FileStream = open(arg, 'r')
     except IOError:
-        ReturnString = Error(
-            'File Error', f'The file "{arg}" could not be opened.')
+        ReturnString = str(Error(
+            'File Error', f'The file "{arg}" could not be opened.'))
     except UnicodeError:
-        ReturnString = Error(
-            'File Error', f'The file "{arg}" could not be opened.')
+        ReturnString = str(Error(
+            'File Error', f'The file "{arg}" could not be opened.'))
 
-    if FileStream:
-        ReturnString += FileStream.read()
+    try:
+        if FileStream:
+            ReturnString += FileStream.read()
+    except IOError:
+        ReturnString += str(Error(
+            'File Error', f'The file "{arg}" could not be read.'))
 
     return ReturnString
 
@@ -88,31 +96,36 @@ def Help(args, arg):
 
     return ReturnString
 
-#clear/cls
+# clear/cls
 
 
 def Clear(args, arg):
     ReturnString = ''
     print("\033[2J" + '\n'*(500))
-    
+
     return ReturnString
+
 
 def Cls(args, arg):
     return Clear(args, arg)
 
-#quit/exit
+# quit/exit
 
 
 def Exit(args, arg):
     exit(0 if not arg else arg)
     return None
 
+
 def Quit(args, arg):
     Exit(args, arg)
     return None
 
+
 #PLANNED: SCRIPTING
 # openscript:CoolScript.ls
+
+
 def openscript(args, arg):
     ReturnString = 'This feature is currently disabled!\nThis feature is most likely going to be re-enabled in 0.1.4 or 0.1.5.'
 
@@ -136,7 +149,7 @@ def ext(args, arg):
     #     Command = args[0]
     # except IndexError:
     #     Command = None
-    #     ReturnString = Error('Arguments Error', 'No Extension supplied')
+    #     ReturnString = str(Error('Arguments Error', 'No Extension supplied'))
 
     # try:
     #     Arguments = args[1:]
