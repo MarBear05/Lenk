@@ -6,7 +6,7 @@ from .Error import Error
 class Controller:
     def __init__(self):
         # help
-        self.HelpText = """Lenk Help\n\nHelp\nResponds with this\nArgs: none\n\nVersion\nResponds with the current version with 'Lenk Version' following it. With the 'only' argument set it will only respond with the current version.\nArgs: [only]\n\nText\nMirrors input\nArgs: {string}\n\nNumeric\nEvaluates math expressions\nArgs: {expression}\n\nClear/Cls\nClears the terminal\nArgs: none\n\nQuit/Exit\nExits process\nArgs: none\n\nSet\nCreates a variable\nArgs: {name, value}\n\nGet\nResponds with variables content\nArgs: {variable}\n\nOpenFile\nGets the content of a file\nArgs: {filepath}"""
+        self.HelpText = """Lenk Help\n\nHelp\nResponds with this\nArgs: none\n\nVersion\nResponds with the current version with 'Lenk Version' following it. With the 'only' argument set it will only respond with the current version.\nArgs: [only]\n\nText\nMirrors input\nArgs: {string}\n\nNumeric\nEvaluates math expressions\nArgs: {expression}\n\nClear/Cls\nClears the terminal\nArgs: none\n\nQuit/Exit\nExits process\nArgs: [string OR number]\n\nSet\nCreates a variable\nArgs: {name, value}\n\nGet\nResponds with variables content\nArgs: {variable}\n\nOpenFile\nGets the content of a file\nArgs: {filepath}"""
         # version
         self.Version = "0.1.3"
         #set and get
